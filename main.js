@@ -26,21 +26,27 @@ $(document).ready(function() {
     n = setInterval(ispis_slova, 200);
   }
 
-  function ubacivanje_slika() {
-    $('#srednje').html('<img src="img/s'+brojac+'.jpg">');
+   function ubacivanje_slika() {
 
-      if (brojac == 3) {
-          brojac = 1;
-      }else {
-        brojac++;
-      }
+      $('#srednje').html('<img src="img/s'+brojac+'.jpg">');
 
-      setTimeout(brisanje_slika, 2000);
+        if (brojac == 3) {
+            brojac = 1;
+        }else {
+          brojac++;
+        }
+
+        setTimeout(brisanje_slika, 3000);
+
+
 
   }
   function brisanje_slika() {
-    $('img').fadeOut(function() {
-      ubacivanje_slika();
+    $('img').fadeOut(2000, function() {
+      $('#srednje').html('<img src="img/naslovna2.png">')
+      setTimeout(function() {
+        $('img').fadeOut(2000, ubacivanje_slika);
+      }, 3000);
     })
   }
 });
